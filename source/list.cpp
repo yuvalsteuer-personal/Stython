@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "list.h"
-
+#include "usefulFunctions.h"
 
 
 List::List(const std::string & strList, bool isTemp) : Sequence(isTemp)
@@ -19,7 +19,7 @@ List::List(const std::string & strList, bool isTemp) : Sequence(isTemp)
 			{
 				if(!str.empty())
 				{
-					Helper::trim(str);
+					Useful::trim(str);
 					_lst.push_back(Parser::getType(str, false));
 					str = "";
 				}
