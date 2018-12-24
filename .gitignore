@@ -1,1 +1,9 @@
 source/Debug
+source/.vs/
+source/stython.sln
+source/stython.vcxproj
+source/stython.vcxproj.filters
+source/stython.vcxproj.user
+source/targetver.h
+source/stdafx.h
+source/stdafx.cpp
