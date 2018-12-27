@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Header Files\Type Files">
+      <UniqueIdentifier>{5e8e21ad-4ac9-4642-b3f6-c3d47fc927d6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Type Files">
+      <UniqueIdentifier>{17e90764-34eb-43b8-9017-9637c4040144}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Exception Files">
+      <UniqueIdentifier>{cd900fe5-dcc2-4f9b-a092-8061548e516e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Exception Files">
+      <UniqueIdentifier>{fe371ece-46a7-4db6-be72-6caa7197f147}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Text Processing">
+      <UniqueIdentifier>{a0ed3a08-7105-4362-a0aa-63c4e75375c3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Text Processing">
+      <UniqueIdentifier>{3d5d23e2-56f7-45b6-b531-c6f7dcecb9ee}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="boolean.h">
+      <Filter>Header Files\Type Files</Filter>
+    </ClInclude>
+    <ClInclude Include="list.h">
+      <Filter>Header Files\Type Files</Filter>
+    </ClInclude>
+    <ClInclude Include="string.h">
+      <Filter>Header Files\Type Files</Filter>
+    </ClInclude>
+    <ClInclude Include="type.h">
+      <Filter>Header Files\Type Files</Filter>
+    </ClInclude>
+    <ClInclude Include="void.h">
+      <Filter>Header Files\Type Files</Filter>
+    </ClInclude>
+    <ClInclude Include="sequence.h">
+      <Filter>Header Files\Type Files</Filter>
+    </ClInclude>
+    <ClInclude Include="integer.h">
+      <Filter>Header Files\Type Files</Filter>
+    </ClInclude>
+    <ClInclude Include="interperterException.h">
+      <Filter>Header Files\Exception Files</Filter>
+    </ClInclude>
+    <ClInclude Include="indentationException.h">
+      <Filter>Header Files\Exception Files</Filter>
+    </ClInclude>
+    <ClInclude Include="nameErrorException.h">
+      <Filter>Header Files\Exception Files</Filter>
+    </ClInclude>
+    <ClInclude Include="syntaxException.h">
+      <Filter>Header Files\Exception Files</Filter>
+    </ClInclude>
+    <ClInclude Include="typeException.h">
+      <Filter>Header Files\Exception Files</Filter>
+    </ClInclude>
+    <ClInclude Include="usefulFunctions.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lexer.h">
+      <Filter>Header Files\Text Processing</Filter>
+    </ClInclude>
+    <ClInclude Include="parser.h">
+      <Filter>Header Files\Text Processing</Filter>
+    </ClInclude>
+    <ClInclude Include="token.h">
+      <Filter>Header Files\Text Processing</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="boolean.cpp">
+      <Filter>Source Files\Type Files</Filter>
+    </ClCompile>
+    <ClCompile Include="integer.cpp">
+      <Filter>Source Files\Type Files</Filter>
+    </ClCompile>
+    <ClCompile Include="list.cpp">
+      <Filter>Source Files\Type Files</Filter>
+    </ClCompile>
+    <ClCompile Include="string.cpp">
+      <Filter>Source Files\Type Files</Filter>
+    </ClCompile>
+    <ClCompile Include="type.cpp">
+      <Filter>Source Files\Type Files</Filter>
+    </ClCompile>
+    <ClCompile Include="void.cpp">
+      <Filter>Source Files\Type Files</Filter>
+    </ClCompile>
+    <ClCompile Include="syntaxException.cpp">
+      <Filter>Source Files\Exception Files</Filter>
+    </ClCompile>
+    <ClCompile Include="typeException.cpp">
+      <Filter>Source Files\Exception Files</Filter>
+    </ClCompile>
+    <ClCompile Include="indentationException.cpp">
+      <Filter>Source Files\Exception Files</Filter>
+    </ClCompile>
+    <ClCompile Include="interperterException.cpp">
+      <Filter>Source Files\Exception Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nameErrorException.cpp">
+      <Filter>Source Files\Exception Files</Filter>
+    </ClCompile>
+    <ClCompile Include="sequence.cpp">
+      <Filter>Source Files\Type Files</Filter>
+    </ClCompile>
+    <ClCompile Include="usefulFunctions.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="token.cpp">
+      <Filter>Source Files\Text Processing</Filter>
+    </ClCompile>
+    <ClCompile Include="lexer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

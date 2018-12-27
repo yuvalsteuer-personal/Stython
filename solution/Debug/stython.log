@@ -1,0 +1,10 @@
+﻿  lexer.cpp
+c:\users\yuval\desktop\stython\stython_repository\source\token.h(23): warning C4091: 'static ': ignored on left of 'Token::TokenType' when no variable is declared
+  list.cpp
+  token.cpp
+c:\users\yuval\desktop\stython\stython_repository\source\token.h(23): warning C4091: 'static ': ignored on left of 'Token::TokenType' when no variable is declared
+  usefulFunctions.cpp
+c:\users\yuval\desktop\stython\stython_repository\source\usefulfunctions.cpp(44): warning C4018: '<': signed/unsigned mismatch
+c:\users\yuval\desktop\stython\stython_repository\source\usefulfunctions.cpp(97): warning C4018: '<': signed/unsigned mismatch
+  Generating Code...
+  stython.vcxproj -> C:\Users\yuval\Desktop\stython\Stython_Repository\source\Debug\stython.exe
