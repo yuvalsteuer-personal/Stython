@@ -18,6 +18,11 @@ public:
 	// check if the parameter is valid String value
 	static bool isString(const std::string& str);
 
+
+	static std::vector<Type*> toList(std::string& str);
+
+	static void toList(std::string str, bool IS_LIST, bool IS_STRING, std::vector<Type*>& vec, char dl);
+
 	// check if the parameter is valid List value
 	static bool isList(std::string str, bool IS_LIST, bool IS_STRING, std::vector<Type*>& vec, char dl);
 
@@ -36,21 +41,28 @@ public:
 	// check if the parameter is underscore ('_')
 	static bool isUnderscore(char c);
 
+	//checks if the parameter is a seperator.
+	static bool isSeperator(char c);
+
+	//checks if the parameter is a operator.
+	static bool isOperator(const std::string& str);
 
 	//split the string according to the dilimiter.
 	static std::vector<std::string> split(std::string str, char delimiter);
 
 	// remove whitespace from the begining and the end of the string
-	static std::string trim(std::string &str);
+	static std::string trim(std::string str);
 
 	// remove whitespace from the end of the string
-	static std::string rtrim(std::string &str);
+	static std::string rtrim(const std::string &str);
 
 	// remove whitespace from the beginning of the string
-	static std::string ltrim(std::string &str);
+	static std::string ltrim(const std::string &str);
 
 	// remove leading zeros from the beginning of the string
-	static std::string removeLeadingZeros(std::string& str);
+	static std::string removeLeadingZeros(std::string str);
+
+
 
 };
 

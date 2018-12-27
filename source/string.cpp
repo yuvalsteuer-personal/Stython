@@ -3,6 +3,15 @@
 
 
 
+String::String(std::string str, bool isTemp) : _str(str), Sequence(isTemp)
+{
+	if ((_str[0] == '\"' || _str[0] == '\'') && (_str[str.length() - 1] == '\"' || _str[str.length() - 1] == '\''))
+	{
+		_str[0] = '\'';
+		_str[_str.length() - 1] = '\'';
+	}
+}
+
 bool String::isPrintable()const
 {
 	return true;

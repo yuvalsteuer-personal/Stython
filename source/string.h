@@ -12,7 +12,7 @@ private:
 	std::string _str = "";
 
 public:
-	String(std::string str = "", bool isTemp = false) : _str(str), Sequence(isTemp) {}
+	String(std::string str = "", bool isTemp = false);
 
 	//virtual
 	virtual bool isPrintable()const override;

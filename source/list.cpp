@@ -20,7 +20,7 @@ List::List(const std::string & strList, bool isTemp) : Sequence(isTemp)
 				if(!str.empty())
 				{
 					Useful::trim(str);
-					_lst.push_back(Parser::getType(str, false));
+					//_lst.push_back(Parser::getType(str, false));
 					str = "";
 				}
 			}
