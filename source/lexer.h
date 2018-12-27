@@ -29,7 +29,7 @@ private:
 	std::string getNextSeperator(std::string & input);
 
 public:
-	//returns the next token in the stream.
+	//returns the next token in the stream. 
 	Token getNextToken(std::string& input);
 	
 

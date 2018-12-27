@@ -26,6 +26,7 @@ std::string Lexer::getNextName(std::string & input)
 	static std::regex namePattern(R"cr([a-zA-Z_]\w*)cr");
 	return getNextWord(input,namePattern);
 }
+
 //gets the next word according to the integer pattern, returns "" if integer isn't the next word.
 std::string Lexer::getNextIntegerLiteral(std::string & input)
 {
