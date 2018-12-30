@@ -9,15 +9,25 @@
 class Useful
 {
 public:
+
+	//check if the parameter is valud
 	// check if the parameter is valid Integer value
 	static bool isInteger(const std::string& str);
+	
+	// check if the parameter is valid Floating point value
+	static bool isFloat(const std::string& str);
+
+	// check if the parameter is valid Binary value
+	static bool isBinary(const std::string& str);
+
+	// check if the parameter is valid Hexadecimal value
+	static bool isHexadecimal(const std::string& str);
 
 	// check if the parameter is valid Boolean value
 	static bool isBoolean(const std::string& str);
 
 	// check if the parameter is valid String value
 	static bool isString(const std::string& str);
-
 
 	static std::vector<Type*> toList(std::string& str);
 

@@ -15,6 +15,30 @@ bool Useful::isInteger(const std::string & str)
 	return true;
 }
 
+bool Useful::isFloat(const std::string & str)
+{
+	std::regex pattern(R"st((\d|)\.(\d)*)st");
+	std::smatch match;
+	bool isFound = std::regex_search(str, match, pattern);//find match.
+	return isFound && (str == match.str());//check if the string matched is equal to str, and that thre's a match at all.
+}
+
+bool Useful::isBinary(const std::string & str)
+{
+	std::regex pattern(R"st(0b(0|1)+)st");
+	std::smatch match;
+	bool isFound = std::regex_search(str, match, pattern);//find match.
+	return isFound && (str == match.str());//check if the string matched is equal to str, and that thre's a match at all.
+}
+
+bool Useful::isHexadecimal(const std::string & str)
+{
+	std::regex pattern(R"st(0(x|X)([0-9]|[A-F]|[a-f])+)st");
+	std::smatch match;
+	bool isFound = std::regex_search(str, match, pattern);//find match.
+	return isFound && (str == match.str());//check if the string matched is equal to str, and that thre's a match at all.
+}
+
 bool Useful::isBoolean(const std::string & str)
 {
 	return (str == "True") || (str == "False");
@@ -22,7 +46,7 @@ bool Useful::isBoolean(const std::string & str)
 
 bool Useful::isString(const std::string & str)
 {
-	std::regex pattern(R"limit(("|')(?:[^"'\\]|\\.)*\1)limit");
+	std::regex pattern(R"st(("|')(?:[^"'\\]|\\.)*\1)st");
 	std::smatch match;
 	bool isFound = std::regex_search(str, match, pattern);//find match.
 	return isFound && (str == match.str());//check if the string matched is equal to str, and that thre's a match at all.
@@ -41,7 +65,7 @@ void Useful::toList(std::string str, bool IS_LIST, bool IS_STRING, std::vector<T
 	
 	bool strFlag = false, listFlag = false;
 	std::string temp;
-	for (int i = 0; i < str.length(); ++i)
+	for (size_t  i = 0; i < str.length(); ++i)
 	{
 		if (!IS_STRING)
 		{
@@ -94,7 +118,7 @@ bool Useful::isList(std::string str, bool IS_LIST, bool IS_STRING, std::vector<T
 	bool strFlag = false, listFlag = false;
 	bool is_list = false;
 	std::string temp;
-	for (int i = 0; i < str.length(); ++i)
+	for (size_t i = 0; i < str.length(); ++i)
 	{
 		if (IS_STRING == false)
 		{

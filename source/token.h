@@ -6,11 +6,13 @@
 class Token
 {
 public:
-	static enum TokenType
+	enum TokenType
 	{
 		NAME,
 		INTEGER,
 		FLOAT,
+		HEXADECIMAL,
+		BINARY,
 		BOOLEAN,
 		STRING,
 		LIST,
