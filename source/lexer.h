@@ -7,6 +7,8 @@
 class Lexer
 {
 private:
+
+private:
 	//gets the next word according to the pattern and removes it from the string.
 	std::string getNextWord(std::string& input, const std::regex& pattern);
 
@@ -40,7 +42,10 @@ private:
 public:
 	//returns the next token in the stream. 
 	Token getNextToken(std::string& input);
-	
+	void pushToken(Token &token)
+	{
+
+	}
 
 };
 

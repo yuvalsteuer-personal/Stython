@@ -113,6 +113,8 @@ Token Lexer::getNextToken(std::string & input)
 			return Token(tokenValue, Token::SEPERATOR);
 		else if (Useful::isOperator(op) && (tokenValue = getNextOperator(input)) != "")
 			return Token(tokenValue, Token::OPERATOR);
+		else if (input[0] == '\n')
+			return Token(tokenValue, Token::NEWLINE);
 		else
 			throw SyntaxException();
 	}
