@@ -7,7 +7,7 @@
 
 
 //matchs the next word according to the pattern and removes it from the string.
-std::string Lexer::matchNextWord(std::string & input, const std::regex & pattern)
+std::string Lexer::matchNextWord(std::string& input, const std::regex& pattern)
 {
 	std::smatch match;
 	if (std::regex_search(input, match, pattern))
@@ -93,25 +93,25 @@ Token Lexer::matchNextToken(std::string & input)
 		if(input.length() > 1)
 			op = std::to_string(input[0]) + std::to_string(input[1]);
 		
-		if ((Useful::isLetter(nextChar) || Useful::isUnderscore(nextChar)) && (lexeme = Lexer::matchNextName(input)) != "")
+		if ((Useful::isLetter(nextChar) || Useful::isUnderscore(nextChar)) && (lexeme = matchNextName(input)) != "")
 		{
 			if (Useful::isBoolean(lexeme))
 				return Token( Token::BOOLEAN,lexeme);
 			return Token( Token::NAME,lexeme);
 		}
-		else if (Useful::isDigit(nextChar) && (lexeme = Lexer::matchNextIntegerLiteral(input)) != "")
+		else if (Useful::isDigit(nextChar) && (lexeme = matchNextIntegerLiteral(input)) != "")
 			return Token(Token::INTEGER,lexeme);
-		else if (Useful::isDigit(nextChar) && (lexeme = Lexer::matchNextFloatLiteral(input)) != "")
+		else if (Useful::isDigit(nextChar) && (lexeme = matchNextFloatLiteral(input)) != "")
 			return Token(Token::FLOAT,lexeme);
-		else if (Useful::isDigit(nextChar) && (lexeme = Lexer::matchNextBinaryLiteral(input)) != "")
+		else if (Useful::isDigit(nextChar) && (lexeme = matchNextBinaryLiteral(input)) != "")
 			return Token(Token::BINARY,lexeme);
-		else if (Useful::isDigit(nextChar) && (lexeme = Lexer::matchNextHexadecimalLiteral(input)) != "")
+		else if (Useful::isDigit(nextChar) && (lexeme = matchNextHexadecimalLiteral(input)) != "")
 			return Token(Token::HEXADECIMAL,lexeme);
-		else if ((nextChar == '\'' || nextChar == '\"') && (lexeme = Lexer::matchNextStringLiteral(input)) != "")
+		else if ((nextChar == '\'' || nextChar == '\"') && (lexeme = matchNextStringLiteral(input)) != "")
 			return Token(Token::STRING,lexeme);
-		else if (Useful::isSeperator(nextChar) && (lexeme = Lexer::matchNextSeperator(input)) != "")
+		else if (Useful::isSeperator(nextChar) && (lexeme = matchNextSeperator(input)) != "")
 			return Token(Token::SEPERATOR,lexeme);
-		else if (Useful::isOperator(op) && (lexeme = Lexer::matchNextOperator(input)) != "")
+		else if (Useful::isOperator(op) && (lexeme = matchNextOperator(input)) != "")
 			return Token(Token::OPERATOR,lexeme);
 		else if (input[0] == '\n')
 			return Token(Token::NEWLINE,lexeme);
