@@ -5,7 +5,7 @@
 #include "token.h"
 #include <vector>
 #include "lexer.h"
-TokenStream
+
 %}
 
 
@@ -23,18 +23,19 @@ INTEGER {DIGIT}+
 HEX 0(x|X)[[:xdigit:]]+
 FLOAT {DIGIT}+\.{DIGIT}*
 STRING ((\")([^"'\\]|\\.)*(\"))|((')([^"'\\]|\\.)*('))
-
+INDENT \t|"    "
 
 %%
 
 
-{STRING} lexerObject.TokenStream.push_back(Token(Token::STRING, yytext));
-{IF} lexerObject.TokenStream.push_back(Token(Token::IF, yytext));
-{WHILE} lexerObject.TokenStream.push_back(Token(Token::WHILE, yytext));
-{NAME} lexerObject.TokenStream.push_back(Token(Token::NAME,yytext));
-{FLOAT} lexerObject.TokenStream.push_back(Token(Token::FLOAT, yytext));
-{INTEGER} lexerObject.TokenStream.push_back(Token(Token::INTEGER, yytext));
-{HEX} lexerObject.TokenStream.push_back(Token(Token::HEXADECIMAL, yytext));
+{STRING} Lexer::tokenStream.push_back(Token(Token::STRING, yytext));
+{IF} Lexer::tokenStream.push_back(Token(Token::IF, yytext));
+{WHILE} Lexer::tokenStream.push_back(Token(Token::WHILE, yytext));
+{NAME} Lexer::tokenStream.push_back(Token(Token::NAME,yytext));
+{FLOAT} Lexer::tokenStream.push_back(Token(Token::FLOAT, yytext));
+{INTEGER} Lexer::tokenStream.push_back(Token(Token::INTEGER, yytext));
+{HEX} Lexer::tokenStream.push_back(Token(Token::HEXADECIMAL, yytext));
+{INDENT} {}
 %%
 
 
@@ -45,6 +46,6 @@ int yyFlexLexer::yywrap()
 int main()
 {
 	FlexLexer* lexer = new yyFlexLexer;
-    lexer->yylex(lexerObject);
+    lexer->yylex();
     return 0;
 }

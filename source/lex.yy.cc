@@ -420,11 +420,12 @@ static const flex_int16_t yy_chk[88] =
 #include "token.h"
 #include <vector>
 #include "lexer.h"
-#line 424 "lex.yy.cc"
+TokenStream
+#line 425 "lex.yy.cc"
 /* Keywords*/
 /* Other Tokens */
 /* Literals */
-#line 428 "lex.yy.cc"
+#line 429 "lex.yy.cc"
 
 #define INITIAL 0
 
@@ -556,11 +557,11 @@ YY_DECL
 		}
 
 	{
-#line 27 "gram.lex"
+#line 28 "gram.lex"
 
 
 
-#line 564 "lex.yy.cc"
+#line 565 "lex.yy.cc"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -620,45 +621,45 @@ do_action:	/* This label is used only to access EOF actions. */
 case 1:
 /* rule 1 can match eol */
 YY_RULE_SETUP
-#line 30 "gram.lex"
+#line 31 "gram.lex"
 lexerObject.TokenStream.push_back(Token(Token::STRING, yytext));
-	break;
+	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 31 "gram.lex"
+#line 32 "gram.lex"
 lexerObject.TokenStream.push_back(Token(Token::IF, yytext));
-	break;
+	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 32 "gram.lex"
+#line 33 "gram.lex"
 lexerObject.TokenStream.push_back(Token(Token::WHILE, yytext));
-	break;
+	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 33 "gram.lex"
+#line 34 "gram.lex"
 lexerObject.TokenStream.push_back(Token(Token::NAME,yytext));
-	break;
+	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 34 "gram.lex"
+#line 35 "gram.lex"
 lexerObject.TokenStream.push_back(Token(Token::FLOAT, yytext));
-	break;
+	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 35 "gram.lex"
+#line 36 "gram.lex"
 lexerObject.TokenStream.push_back(Token(Token::INTEGER, yytext));
-	break;
+	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 36 "gram.lex"
+#line 37 "gram.lex"
 lexerObject.TokenStream.push_back(Token(Token::HEXADECIMAL, yytext));
-	break;
+	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 37 "gram.lex"
+#line 38 "gram.lex"
 ECHO;
-	break;
-#line 662 "lex.yy.cc"
+	YY_BREAK
+#line 663 "lex.yy.cc"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -1621,7 +1622,7 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 37 "gram.lex"
+#line 38 "gram.lex"
 
 
 
@@ -1629,7 +1630,7 @@ int yyFlexLexer::yywrap()
 {
 	return 1;
 }
-int main(Lexer& lexerObject)
+int main()
 {
 	FlexLexer* lexer = new yyFlexLexer;
     lexer->yylex(lexerObject);

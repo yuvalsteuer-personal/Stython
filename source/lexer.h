@@ -4,12 +4,14 @@
 #include "token.h"
 #include <string>
 #include <regex>
+#include <stack>
 class Lexer
 {
-  public:
-	static std::vector<Token> TokenStream;
+public:
+	static std::vector<Token> tokenStream;
+	static std::stack<int> indentationStack;
 
-  private:
+private:
 	//gets the next word according to the pattern and removes it from the string.
 	std::string matchNextWord(std::string &input, const std::regex &pattern);
 
@@ -42,7 +44,7 @@ class Lexer
 
   public:
 	//returns the next token in the stream.
-	Token getNextToken(std::string &input);
+	Token matchNextToken(std::string &input);
 	void pushToken(Token &token);
 };
 
