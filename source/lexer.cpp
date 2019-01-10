@@ -1,4 +1,4 @@
-#include "stdafx.h"
+//#include "stdafx.h"
 #include "lexer.h"
 #include "usefulFunctions.h"
 #include "syntaxException.h"
@@ -6,8 +6,8 @@
 
 
 
-//gets the next word according to the pattern and removes it from the string.
-std::string Lexer::getNextWord(std::string & input, const std::regex & pattern)
+//matchs the next word according to the pattern and removes it from the string.
+std::string Lexer::matchNextWord(std::string & input, const std::regex & pattern)
 {
 	std::smatch match;
 	if (std::regex_search(input, match, pattern))
@@ -20,71 +20,71 @@ std::string Lexer::getNextWord(std::string & input, const std::regex & pattern)
 	}
 	return "";
 }
-//gets the next word according to name pattern. returns "" if name isn't next word.
-std::string Lexer::getNextName(std::string & input)
+//matchs the next word according to name pattern. returns "" if name isn't next word.
+std::string Lexer::matchNextName(std::string & input)
 {
 	static std::regex namePattern(R"cr([a-zA-Z_]\w*)cr");
-	return getNextWord(input,namePattern);
+	return Lexer::matchNextWord(input,namePattern);
 }
 
 //gets the next word according to the integer pattern, returns "" if integer isn't the next word.
-std::string Lexer::getNextIntegerLiteral(std::string & input)
+std::string Lexer::matchNextIntegerLiteral(std::string & input)
 {
 	static std::regex integerLiteralPattern(R"st(-?\d+)st");
-	return getNextWord(input,integerLiteralPattern);
+	return Lexer::matchNextWord(input,integerLiteralPattern);
 }
 
 //gets the next word according to the integer pattern, returns "" if integer isn't the next word.
-std::string Lexer::getNextBinaryLiteral(std::string & input)
+std::string Lexer::matchNextBinaryLiteral(std::string & input)
 {
 	std::regex binaryLiteralPattern(R"st(0b(0|1)+)st");
-	return getNextWord(input, binaryLiteralPattern);
+	return Lexer::matchNextWord(input, binaryLiteralPattern);
 }
 
-std::string Lexer::getNextHexadecimalLiteral(std::string & input)
+std::string Lexer::matchNextHexadecimalLiteral(std::string & input)
 {
 	std::regex hexadecimalLiteralPattern(R"st(0(x|X)([0-9]|[A-F]|[a-f])+)st");
-	return getNextWord(input, hexadecimalLiteralPattern);
+	return Lexer::matchNextWord(input, hexadecimalLiteralPattern);
 }
 
 //gets the next word according to the float pattern, returns "" if the next word isn't a float literal.
-std::string Lexer::getNextFloatLiteral(std::string & input)
+std::string Lexer::matchNextFloatLiteral(std::string & input)
 {
 	static std::regex floatLiteralPattern(R"st(-?\d+\.\d*)st");
-	return getNextWord(input, floatLiteralPattern);
+	return Lexer::matchNextWord(input, floatLiteralPattern);
 }
 
 //gets the next word according to the string literal pattern, returns "" if the next word isn't a string literal.
-std::string Lexer::getNextStringLiteral(std::string & input)
+std::string Lexer::matchNextStringLiteral(std::string & input)
 {
 	std::regex stringLiteralPattern(R"st(("|')(?:[^"'\\]|\\.)*\1)st");
-	return getNextWord(input, stringLiteralPattern);
+	return Lexer::matchNextWord(input, stringLiteralPattern);
 }
 
 //gets the next operator word, if the next word isn't a operator returns "".
-std::string Lexer::getNextOperator(std::string & input)
+std::string Lexer::matchNextOperator(std::string & input)
 {
 	std::regex operatorPattern(R"st((~|\.|(!=)|(&|\||\^|\+|\-|\/|\*|=|>|<|\*\*)=?)st");
-	return getNextWord(input, operatorPattern);
+	return Lexer::matchNextWord(input, operatorPattern);
 }
 
 //gets the next seperator word, if the next word isn't a operator returns "".
-std::string Lexer::getNextSeperator(std::string & input)
+std::string Lexer::matchNextSeperator(std::string & input)
 {
 	std::regex seperatorPattern(R"st([\(\)\[\]\{\}\,\:\;])st");
-	return getNextWord(input, seperatorPattern);
+	return Lexer::matchNextWord(input, seperatorPattern);
 }
 
 Token Lexer::makeToken(const std::string & input, Token::TokenType tokenType)
 {
-	return Token(input,tokenType);
+	return Token(tokenType,input);
 }
 
 
 
-Token Lexer::getNextToken(std::string & input)
+Token Lexer::matchNextToken(std::string & input)
 {
-	std::string tokenValue;
+	std::string lexeme;
 	
 	if (!input.empty())
 	{
@@ -93,28 +93,28 @@ Token Lexer::getNextToken(std::string & input)
 		if(input.length() > 1)
 			op = std::to_string(input[0]) + std::to_string(input[1]);
 		
-		if ((Useful::isLetter(nextChar) || Useful::isUnderscore(nextChar)) && (tokenValue = getNextName(input)) != "")
+		if ((Useful::isLetter(nextChar) || Useful::isUnderscore(nextChar)) && (lexeme = Lexer::matchNextName(input)) != "")
 		{
-			if (Useful::isBoolean(tokenValue))
-				return Token(tokenValue, Token::BOOLEAN);
-			return Token(tokenValue, Token::NAME);
+			if (Useful::isBoolean(lexeme))
+				return Token( Token::BOOLEAN,lexeme);
+			return Token( Token::NAME,lexeme);
 		}
-		else if (Useful::isDigit(nextChar) && (tokenValue = getNextIntegerLiteral(input)) != "")
-			return Token(tokenValue, Token::INTEGER);
-		else if (Useful::isDigit(nextChar) && (tokenValue = getNextFloatLiteral(input)) != "")
-			return Token(tokenValue, Token::FLOAT);
-		else if (Useful::isDigit(nextChar) && (tokenValue = getNextBinaryLiteral(input)) != "")
-			return Token(tokenValue, Token::BINARY);
-		else if (Useful::isDigit(nextChar) && (tokenValue = getNextHexadecimalLiteral(input)) != "")
-			return Token(tokenValue, Token::HEXADECIMAL);
-		else if ((nextChar == '\'' || nextChar == '\"') && (tokenValue = getNextStringLiteral(input)) != "")
-			return Token(tokenValue, Token::STRING);
-		else if (Useful::isSeperator(nextChar) && (tokenValue = getNextSeperator(input)) != "")
-			return Token(tokenValue, Token::SEPERATOR);
-		else if (Useful::isOperator(op) && (tokenValue = getNextOperator(input)) != "")
-			return Token(tokenValue, Token::OPERATOR);
+		else if (Useful::isDigit(nextChar) && (lexeme = Lexer::matchNextIntegerLiteral(input)) != "")
+			return Token(Token::INTEGER,lexeme);
+		else if (Useful::isDigit(nextChar) && (lexeme = Lexer::matchNextFloatLiteral(input)) != "")
+			return Token(Token::FLOAT,lexeme);
+		else if (Useful::isDigit(nextChar) && (lexeme = Lexer::matchNextBinaryLiteral(input)) != "")
+			return Token(Token::BINARY,lexeme);
+		else if (Useful::isDigit(nextChar) && (lexeme = Lexer::matchNextHexadecimalLiteral(input)) != "")
+			return Token(Token::HEXADECIMAL,lexeme);
+		else if ((nextChar == '\'' || nextChar == '\"') && (lexeme = Lexer::matchNextStringLiteral(input)) != "")
+			return Token(Token::STRING,lexeme);
+		else if (Useful::isSeperator(nextChar) && (lexeme = Lexer::matchNextSeperator(input)) != "")
+			return Token(Token::SEPERATOR,lexeme);
+		else if (Useful::isOperator(op) && (lexeme = Lexer::matchNextOperator(input)) != "")
+			return Token(Token::OPERATOR,lexeme);
 		else if (input[0] == '\n')
-			return Token(tokenValue, Token::NEWLINE);
+			return Token(Token::NEWLINE,lexeme);
 		else
 			throw SyntaxException();
 	}

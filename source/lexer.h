@@ -6,35 +6,36 @@
 #include <regex>
 class Lexer
 {
-private:
+public:
+	static std::vector<Token> TokenStream;
 
 private:
 	//gets the next word according to the pattern and removes it from the string.
-	std::string getNextWord(std::string& input, const std::regex& pattern);
+	std::string matchNextWord(std::string& input, const std::regex& pattern);
 
 	//gets the next word according to name pattern. returns "" if name isn't next word.
-	std::string getNextName(std::string& input);
+	std::string matchNextName(std::string& input);
 
 	//gets the next word according to the integer pattern, returns "" if integer isn't the next word.
-	std::string getNextIntegerLiteral(std::string& input);
+	std::string matchNextIntegerLiteral(std::string& input);
 
 	//gets the next word according to the binary pattern, returns "" if binary isn't the next word.
-	std::string getNextBinaryLiteral(std::string & input);
+	std::string matchNextBinaryLiteral(std::string & input);
 
 	//gets the next word according to the hexacedimal pattern, returns "" if hexadecimal isn't the next word.
-	std::string getNextHexadecimalLiteral(std::string & input);
+	std::string matchNextHexadecimalLiteral(std::string & input);
 
 	//gets the next word according to the float pattern, returns "" if the next word isn't a float literal.
-	std::string getNextFloatLiteral(std::string& input);
+	std::string matchNextFloatLiteral(std::string& input);
 
 	//gets the next word according to the string literal pattern, returns "" if the next word isn't a string literal.
-	std::string getNextStringLiteral(std::string& input);
+	std::string matchNextStringLiteral(std::string& input);
 
 	//gets the next operator word, if the next word isn't a operator returns "".
-	std::string getNextOperator(std::string & input);
+	std::string matchNextOperator(std::string & input);
 
 	//gets the next seperator word, if the next word isn't a operator returns "".
-	std::string getNextSeperator(std::string & input);
+	std::string matchNextSeperator(std::string & input);
 
 	//makes a new token.
 	Token makeToken(const std::string& input, Token::TokenType tokenType);

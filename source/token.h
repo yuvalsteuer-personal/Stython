@@ -34,7 +34,8 @@ public:
 	Token();
 
 	//Overloaded Constructor
-	Token(std::string value, TokenType type);
+	Token(TokenType type,std::string value);
+	Token(TokenType type,char* value);
 	
 	//getters and setters
 	std::string getValue()const;
