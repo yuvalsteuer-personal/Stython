@@ -8,6 +8,9 @@ class Token
 public:
 	enum TokenType
 	{
+		IF,
+		WHILE,
+		FOR,
 		NAME,
 		INTEGER,
 		FLOAT,
@@ -15,7 +18,6 @@ public:
 		BINARY,
 		BOOLEAN,
 		STRING,
-		LIST,
 		OPERATOR,
 		SEPERATOR,
 		NEWLINE,

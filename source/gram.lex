@@ -22,11 +22,14 @@ STRING ((\")([^"'\\]|\\.)*(\"))|((')([^"'\\]|\\.)*('))
 
 %%
 
+
 {STRING} return Token(Token::STRING, yytext);
+{IF} return Token(Token::IF, yytext);
+{WHILE} return Token(Token::WHILE, yytext);
 {NAME} return Token(Token::NAME,yytext);
 {FLOAT} return Token(Token::FLOAT, yytext);
 {INTEGER} return Token(Token::INTEGER, yytext);
-{HEX}
+{HEX} 
 %%
 
 
